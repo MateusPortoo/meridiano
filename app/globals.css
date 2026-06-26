@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  /* Marca MERIDIANO — light luxury arquitetônico */
+  --color-paper: #f7f5f1; /* fundo principal off-white */
+  --color-surface: #ffffff; /* cards */
+  --color-stone: #efebe4; /* superfícies suaves */
+  --color-ink: #1c1c1a; /* texto / grafite */
+  --color-muted: #6b6862; /* texto secundário */
+  --color-line: #e2ddd4; /* bordas */
+  --color-forest: #234135; /* acento verde-floresta */
+  --color-forest-deep: #182d25;
+  --color-bronze: #9a7b4f; /* detalhes finos */
+
+  /* Semânticos */
+  --color-bg: #f7f5f1;
+  --color-text: #1c1c1a;
+  --color-accent: #234135;
+
+  --space-section: clamp(5rem, 10vw, 9rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "General Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Zodiak", Georgia, serif;
+}
+
+/* Entrada suave */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  opacity: 0;
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,18 @@
+FOTOS DOS IMÓVEIS
+=================
+
+Cada imóvel usa 3 imagens (1 = destaque/fachada, 2 = interior, 3 = vista/área externa).
+Gere no Nano Banana, renomeie e coloque AQUI com o nome exato:
+
+  cobertura-horizonte-1.jpg / -2.jpg / -3.jpg
+  mansao-aurora-1.jpg / -2.jpg / -3.jpg
+  apartamento-meridiano-itaim-1.jpg / -2.jpg / -3.jpg
+  casa-mare-alta-1.jpg / -2.jpg / -3.jpg
+  cobertura-duplex-leblon-1.jpg / -2.jpg / -3.jpg
+  residencia-bosque-1.jpg / -2.jpg / -3.jpg
+
+Formato: JPG, horizontal (proporção 4:3, ex.: 1600x1200).
+Enquanto a foto não existir, o card mostra o placeholder de gradiente automaticamente.
+
+DICA: comece pela imagem "-1" de cada imóvel (6 fotos) pra popular os cards.
+Depois gere as "-2" e "-3" pra completar as galerias.

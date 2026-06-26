@@ -1,0 +1,16 @@
+VÍDEO DE FUNDO DOS HEROS (home + anuncie)
+=========================================
+
+1. Gere o vídeo (Veo 3 ou Kling) a partir do keyframe do Nano Banana
+2. Renomeie para:  hero.mp4
+3. Coloque nesta pasta:  public/videos/hero.mp4
+
+O MESMO vídeo é usado na home e na página /anuncie.
+(Se quiser um diferente pra cada, me avise que eu separo em home.mp4 / anuncie.mp4.)
+
+Otimização para web:
+- MP4 (H.264), 1280px de largura, SEM áudio
+- 5 a 8 segundos, movimento lento (loopa melhor)
+- Manter abaixo de ~1 MB se possível (compressão com HandBrake/ffmpeg)
+
+Enquanto não houver vídeo, os heros mostram um gradiente verde-floresta como fallback.
