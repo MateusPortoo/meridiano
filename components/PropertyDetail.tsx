@@ -10,6 +10,25 @@ const modeLabel: Record<Property["mode"], string> = {
   alugar: "Para alugar",
 };
 
+function VideoSection({ slug, title }: { slug: string; title: string }) {
+  const src = `/videos/${slug}.mp4`;
+  return (
+    <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--color-line)] bg-black">
+      <video
+        src={src}
+        controls
+        playsInline
+        preload="metadata"
+        className="w-full max-h-[520px] object-cover"
+        aria-label={`Vídeo do imóvel ${title}`}
+        onError={(e) => {
+          (e.currentTarget.closest("div") as HTMLDivElement).style.display = "none";
+        }}
+      />
+    </div>
+  );
+}
+
 function Spec({ value, label }: { value: string | number; label: string }) {
   return (
     <div className="flex flex-col">
@@ -49,13 +68,13 @@ export function PropertyDetail({ property }: { property: Property }) {
             </span>
           </div>
 
-          <div className="flex gap-3 md:flex-col">
+          <div className="flex gap-3 md:flex-col md:overflow-y-auto md:max-h-[480px]">
             {property.images.map((img, i) => (
               <button
                 key={img}
                 type="button"
                 onClick={() => setActive(i)}
-                className={`relative aspect-[4/3] flex-1 overflow-hidden rounded-xl border-2 transition-colors md:aspect-auto md:h-[calc((100%-1.5rem)/3)] ${
+                className={`relative aspect-[4/3] flex-shrink-0 overflow-hidden rounded-xl border-2 transition-colors md:aspect-[4/3] md:w-full ${
                   active === i ? "border-[var(--color-forest)]" : "border-transparent"
                 }`}
                 style={{ background: toneStyles[property.tone] }}
@@ -69,6 +88,9 @@ export function PropertyDetail({ property }: { property: Property }) {
             ))}
           </div>
         </div>
+
+        {/* Vídeo do imóvel (exibido somente se existir no servidor) */}
+        <VideoSection slug={property.slug} title={property.title} />
 
         {/* Conteúdo */}
         <div className="mt-12 grid gap-12 lg:grid-cols-3">
@@ -85,12 +107,12 @@ export function PropertyDetail({ property }: { property: Property }) {
             </p>
 
             {/* Specs */}
-            <div className="mt-8 grid grid-cols-3 gap-6 border-y border-[var(--color-line)] py-6 sm:grid-cols-5">
-              <Spec value={`${property.area}m²`} label="Área" />
-              <Spec value={property.bedrooms} label="Quartos" />
-              <Spec value={property.suites} label="Suítes" />
-              <Spec value={property.bathrooms} label="Banheiros" />
-              <Spec value={property.parking} label="Vagas" />
+            <div className="mt-8 flex flex-wrap gap-6 border-y border-[var(--color-line)] py-6">
+              <Spec value={`${property.area}m²`} label="Área total" />
+              {property.bedrooms > 0 && <Spec value={property.bedrooms} label="Quartos" />}
+              {property.suites > 0 && <Spec value={property.suites} label="Suítes" />}
+              {property.bathrooms > 0 && <Spec value={property.bathrooms} label="Banheiros" />}
+              {property.parking > 0 && <Spec value={property.parking} label="Vagas" />}
             </div>
 
             {/* Descrição */}
